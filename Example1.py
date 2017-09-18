@@ -11,8 +11,9 @@ from plotGMM import plotGMM
 nbSamples = 4
 nbVar = 3
 nbFrames = 2
-nbStates = 10
+nbStates = 3
 nbData = 200
+showGaussians = True
 
 # Preparing the samples----------------------------------------------------------------------------------------------- #
 slist = []
@@ -32,7 +33,7 @@ for i in range(nbSamples):
 # Learning the model-------------------------------------------------------------------------------------------------- #
 model = model(nbStates, nbFrames, nbVar, None, None, None, None, None)
 model = init_proposedPGMM_timeBased(slist, model)
-model, tensor = EM_tensorGMM(slist, model)
+model = EM_tensorGMM(slist, model)
 # -------------------------------------------------------------------------------------------------------------------- #
 
 # Reproduction for parameters used in demonstration------------------------------------------------------------------- #
@@ -44,8 +45,8 @@ for n in range(nbSamples):
 # Plotting------------------------------------------------------------------------------------------------------------ #
 xaxis = 1
 yaxis = 2
-xlim = [-10, 10]
-ylim = [-10, 10]
+xlim = [-1.2, 0.8]
+ylim = [-1.1, 0.9]
 
 # Demos--------------------------------------------------------------------------------------------------------------- #
 fig = plt.figure()
@@ -74,16 +75,15 @@ for n in range(nbSamples):
         ax2.plot(rlist[n].p[m,0].b[xaxis,0], rlist[n].p[m,0].b[yaxis,0], ms = 30, marker = '.', color = [0,1,m])
     ax2.plot(rlist[n].Data[xaxis, 0], rlist[n].Data[yaxis, 0], marker='.', ms=15)
     ax2.plot(rlist[n].Data[xaxis, :], rlist[n].Data[yaxis, :])
-    # plotGMM(rlist[n].Mu[np.ix_([xaxis,yaxis], range(nbStates), [1])], rlist[n].Sigma[np.ix_([xaxis, yaxis], [xaxis, yaxis], range(nbStates), [1])], [0, 0.8, 0], 1, ax2)
-
-
+    if showGaussians:
+        plotGMM(rlist[n].Mu[np.ix_([xaxis,yaxis], range(nbStates), [1])], rlist[n].Sigma[np.ix_([xaxis, yaxis], [xaxis, yaxis], range(nbStates), [1])], [0.5, 0.5, 0.5], 1, ax2)
 # -------------------------------------------------------------------------------------------------------------------- #
 
 nclus = nbStates
 frameIndex = 0
 rows = np.array([xaxis, yaxis])
 cols = np.arange(0, nclus, 1)
-plotGMM(model.ref[frameIndex].ZMu[np.ix_(rows, cols)], model.ref[frameIndex].ZSigma[np.ix_(rows, rows, cols)],
-    [0, 0.8, 0], 1, ax2)
+# plotGMM(model.ref[frameIndex].ZMu[np.ix_(rows, cols)], model.ref[frameIndex].ZSigma[np.ix_(rows, rows, cols)],
+#     [0, 0.8, 0], 1, ax2)
 
 plt.show()

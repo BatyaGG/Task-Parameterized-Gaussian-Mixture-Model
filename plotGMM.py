@@ -18,11 +18,11 @@ def plotGMM(Mu, Sigma, color,display_mode, ax):
     maxsy = []
 
     if display_mode==1:
-        nbDrawingSeg = 40
+        nbDrawingSeg = 36
         t = np.linspace(-np.pi,np.pi,nbDrawingSeg)
         t = np.transpose(t)
         for j in range (0,nbData):
-            stdev = lin.sqrtm(3*Sigma[:,:,j])
+            stdev = lin.sqrtm(0.1*Sigma[:,:,j])
             X = np.dot(np.transpose([np.cos(t), np.sin(t)]), np.real(stdev))
             X = X + np.tile(np.transpose(Mu[:,j]), (nbDrawingSeg,1))
 
@@ -46,9 +46,9 @@ def plotGMM(Mu, Sigma, color,display_mode, ax):
                 verts.append(vert)
                 codes.append(code)
             path = Path(verts, codes)
-            patch = patches.PathPatch(path, facecolor=lightcolor, edgecolor=color, lw=2)
+            patch = patches.PathPatch(path, facecolor=lightcolor, edgecolor=color, lw=2, zorder = 3)
             ax.add_patch(patch)
-            ax.plot(Mu[0,:], Mu[1,:], "x",color = color)
+            ax.plot(Mu[0,:], Mu[1,:], "x",color = color, zorder = 3)
         # ax.set_xlim(min(minsx),max(maxsx))
         # ax.set_ylim(min(minsy),max(maxsy))
     elif display_mode == 2:
@@ -57,7 +57,7 @@ def plotGMM(Mu, Sigma, color,display_mode, ax):
         t = np.transpose(t)
 
         for j in range(0, nbData):
-            stdev = lin.sqrtm(3 * Sigma[:, :, j])
+            stdev = lin.sqrtm(1 * Sigma[:, :, j])
             X = np.dot(np.transpose([np.cos(t), np.sin(t)]), np.real(stdev))
             X = X + np.tile(np.transpose(Mu[:, j]), (nbDrawingSeg, 1))
 

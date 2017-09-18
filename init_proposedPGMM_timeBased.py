@@ -7,12 +7,9 @@ def init_proposedPGMM_timeBased(s, modelcur):
     DataTotalSize = 0
     for i in range(0, len(s)):
         DataTotalSize = DataTotalSize + s[i].nbData
-
-    DataAll = np.ndarray(shape = (1,DataTotalSize))
-    DataAll = np.delete(DataAll, 0, axis = 0)
+    DataAll = np.ndarray(shape = (0,DataTotalSize))
     for i in range (0, modelcur.nbFrames):
-        DataTmp = np.ndarray(shape=(np.shape(s[0].Data)[0], 1))
-        DataTmp = np.delete(DataTmp, 0, axis=1)
+        DataTmp = np.ndarray(shape=(np.shape(s[0].Data)[0], 0))
         for j in range (0, nbSamples):
             for k in range (0, s[j].nbData):
                 # print np.shape(np.dot(s[j].p[i, k].invA, (np.reshape(s[j].Data[:, k], newshape=(np.shape(s[0].Data)[0], 1)) - np.reshape(s[j].p[i, k].b, newshape=(np.shape(s[0].Data)[0], 1)))))
