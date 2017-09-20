@@ -83,4 +83,6 @@ ax3.set_aspect(abs(xlim[1]-xlim[0])/abs(ylim[1]-ylim[0]))
 for n in range(nbSamples):
     TPGMMGMR.plotReproduction(rnewlist[n], xaxis, yaxis, ax3, showGaussians=True)
 
+print TPGMMGMR.getReproductionMatrix(rnewlist[0])
+
 plt.show()

@@ -29,3 +29,5 @@ class TPGMM_GMR(object):
             plotGMM(r.Mu[np.ix_([xaxis, yaxis], range(r.Mu.shape[1]), [0])],
                     r.Sigma[np.ix_([xaxis, yaxis], [xaxis, yaxis], range(r.Mu.shape[1]), [0])], [0.5, 0.5, 0.5], 1, ax)
 
+    def getReproductionMatrix(self, r):
+        return r.Data
