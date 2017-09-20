@@ -1,8 +1,26 @@
 import numpy as np
 from matplotlib.path import Path
 import matplotlib.patches as patches
-import scipy.linalg as lin
-import matplotlib.pyplot as plt
+
+def Denman_Beavers_sqrtm(A):
+    Y = A
+    Z = np.eye(len(A))
+    error = 1
+    error_tolerance = 1.5e-8
+    flag = 1
+    while(error > error_tolerance):
+        Y_old = Y
+        Y = (Y_old + np.linalg.inv(Z))/2
+        Z = (Z + np.linalg.inv(Y_old))/2
+        error_matrix = abs(Y - Y_old)
+        error = 0
+        # detect the maximum value in the error matrix
+        for i in range(len(A)):
+            temp_error = max(error_matrix[i])
+            if(temp_error > error):
+                error = temp_error
+        flag = flag + 1
+    return Y
 
 def plotGMM(Mu, Sigma, color,display_mode, ax):
     Mu = np.squeeze(Mu)
@@ -22,7 +40,7 @@ def plotGMM(Mu, Sigma, color,display_mode, ax):
         t = np.linspace(-np.pi,np.pi,nbDrawingSeg)
         t = np.transpose(t)
         for j in range (0,nbData):
-            stdev = lin.sqrtm(0.1*Sigma[:,:,j])
+            stdev = Denman_Beavers_sqrtm(0.1*Sigma[:,:,j])
             X = np.dot(np.transpose([np.cos(t), np.sin(t)]), np.real(stdev))
             X = X + np.tile(np.transpose(Mu[:,j]), (nbDrawingSeg,1))
 
@@ -57,7 +75,7 @@ def plotGMM(Mu, Sigma, color,display_mode, ax):
         t = np.transpose(t)
 
         for j in range(0, nbData):
-            stdev = lin.sqrtm(1 * Sigma[:, :, j])
+            stdev = Denman_Beavers_sqrtm(1 * Sigma[:, :, j])
             X = np.dot(np.transpose([np.cos(t), np.sin(t)]), np.real(stdev))
             X = X + np.tile(np.transpose(Mu[:, j]), (nbDrawingSeg, 1))
 
