@@ -7,3 +7,5 @@ All math and concepts are referred from the research publication and MATLAB impl
 Calinon, S. (2016)
 A Tutorial on Task-Parameterized Movement Learning and Retrieval
 Intelligent Service Robotics (Springer), 9:1, 1-29.
+
+MATLAB implementation: http://calinon.ch/download/task-parameterized-GMM.zip
