@@ -22,4 +22,6 @@ Other versions of the packages were not tested, but higher versions are welcome.
 
 # Usage
 
-To use TPGMM algorithm you need to have your datas in proper format. 
+To use TPGMM algorithm you need to have your datas in proper format:
+
+![alt text](https://raw.githubusercontent.com/BatyaGG/Task-Parameterized-Gaussian-Mixture-Model/master/data.JPG)
