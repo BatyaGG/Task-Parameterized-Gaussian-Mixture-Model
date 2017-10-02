@@ -78,3 +78,6 @@ ax = fig.add_subplot(111)
 TPGMMGMR.plotReproduction(reproduction, 1, 2, ax, showGaussians=True)
 ```
 As can be noted, Gaussians can be hided. It is useful when big amount of gaussian states is used for accuracy reason.
+
+# Contribution
+I appreciate any contribution attempts to this project. One way to contribute is to test the algorithm for several input dimensions. In general, it should work, however I did not test it yet. For this purpose, useful high dimensional data should be generated and methods have to be slightly modified. If you have any ideas or want to contribute contact me to b.saduanov@gmail.com.
