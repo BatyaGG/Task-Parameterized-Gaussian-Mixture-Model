@@ -42,7 +42,7 @@ for n in range(nbSamples):
     newP = deepcopy(slist[n].p)
     for m in range(1, nbFrames):
         bTransform = np.random.rand(nbVar, 1) + 0.5
-        aTransform = np.random.rand(nbVar, nbVar) + 0.5
+        aTransform = np.random.rand(nbVar, nbVar) +0.5
         for k in range(nbData):
             newP[m, k].A = newP[m, k].A * aTransform
             newP[m, k].b = newP[m, k].b * bTransform
@@ -60,6 +60,7 @@ ax1 = fig.add_subplot(131)
 ax1.set_xlim(xlim)
 ax1.set_ylim(ylim)
 ax1.set_aspect(abs(xlim[1]-xlim[0])/abs(ylim[1]-ylim[0]))
+plt.title('Demonstrations')
 for n in range(nbSamples):
     for m in range(nbFrames):
         ax1.plot([slist[n].p[m,0].b[xaxis,0], slist[n].p[m,0].b[xaxis,0] + slist[n].p[m,0].A[xaxis,yaxis]], [slist[n].p[m,0].b[yaxis,0], slist[n].p[m,0].b[yaxis,0] + slist[n].p[m,0].A[yaxis,yaxis]], lw = 7, color = [0,1,m])
@@ -72,6 +73,7 @@ ax2 = fig.add_subplot(132)
 ax2.set_xlim(xlim)
 ax2.set_ylim(ylim)
 ax2.set_aspect(abs(xlim[1]-xlim[0])/abs(ylim[1]-ylim[0]))
+plt.title('Reproductions with same task parameters')
 for n in range(nbSamples):
     TPGMMGMR.plotReproduction(rdemolist[n], xaxis, yaxis, ax2, showGaussians=True)
 
@@ -80,6 +82,7 @@ ax3 = fig.add_subplot(133)
 ax3.set_xlim(xlim)
 ax3.set_ylim(ylim)
 ax3.set_aspect(abs(xlim[1]-xlim[0])/abs(ylim[1]-ylim[0]))
+plt.title('Reproduction with generated task parameters')
 for n in range(nbSamples):
     TPGMMGMR.plotReproduction(rnewlist[n], xaxis, yaxis, ax3, showGaussians=True)
 
