@@ -65,8 +65,16 @@ Then train algorithm by calling method 'fit':
 ```
 TPGMMGMR.fit(slist)
 ```
-After model is learned, we can reproduce the trajectory for a new sets of parameters. For that purpose, new parameters should be recorded and created, however in this case script randomly deform original parameters matrix. To reproduce trajectory for some new task parameters, TPGMM_GMR's method 'reproduce' is used. This method have 2 parameters which are: task-parameter matrix and current position of trajectory or starting point.
+After model is learned, we can reproduce the trajectory for a new sets of parameters. For that purpose, new parameters should be recorded and created, however in this case script randomly deform original parameters matrix. To reproduce trajectory for some new task parameters, TPGMM_GMR's method 'reproduce' is used. This method have 2 parameters which are: task-parameter matrix and current position of trajectory or starting point. The method return reproduction object which have information about frames, trajectory and gaussian states.
 ```
-TPGMMGMR.reproduce(newTaskParameterMatrix, slist[0].Data[1:2, 0])
+reproduction = TPGMMGMR.reproduce(newTaskParameterMatrix, slist[0].Data[1:2, 0])
 ```
 This line of code will create new trajectory based on newTaskParameterMatrix and will consider first sample's first data point as starting point.
+
+To plot reproduction trajectory together with its task parameters and gaussian states please use TPGMM_GMR's 'plotReproduction' method.
+```
+fig = plt.figure()
+ax = fig.add_subplot(111)
+TPGMMGMR.plotReproduction(reproduction, 1, 2, ax, showGaussians=True)
+```
+As can be noted, Gaussians can be hided. It is useful when big amount of gaussian states is used for accuracy reason.
