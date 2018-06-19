@@ -2,9 +2,16 @@
 
 ![alt text](https://raw.githubusercontent.com/BatyaGG/Task-Parameterized-Gaussian-Mixture-Model/master/TPGMM_figure.PNG)
 
-Python implementation of Task-Parameterized Gaussian Mixture Model(TPGMM) and Regression algorithms with example and data in txt format. TPGMM is Gaussian Mixture Model algorithm which is parameterized on reference frames locations and orientations. It adapts regression trajectories based on the parameters - positions and orientations of the frames. Any object or point in cartesian space is able to be a reference frame. Current approach uses k-means clustering to initialize gaussian parameters and iterative Expectation-Maximization (EM) algorithm to bring them closer to the truth. After TPGMM is fitted, the model together with new frame parameters are applied to gaussian regression to retrieve output features by time input.
+Python implementation of Task-Parameterized Gaussian Mixture Model(TPGMM) and Regression algorithms with example and data in txt format. TPGMM is Gaussian Mixture Model algorithm which is parameterized on reference frames locations and orientations. It adapts regression trajectories based on the parameters - positions and orientations of the frames. Any object or point in cartesian space is able to be a reference frame. Current approach uses k-means clustering to initialize gaussian parameters and iterative Expectation-Maximization (EM) algorithm to bring them closer to the truth. After TPGMM is fitted, the model together with new frame parameters are applied to gaussian regression to retrieve output features by time input. Please take a look to the demo video of application of TPGMM and GMR to train/generate NAO robot right arm trajectory.
 
-My associated with this project paper:
+<p align="center"> 
+<a href="https://www.youtube.com/watch?v=yENSZpewsRY" target="_blank"><img src="https://github.com/BatyaGG/Task-Parameterized-Gaussian-Mixture-Model/blob/master/youtube.png" 
+width="70%"" border="10" /></a> 
+<br> 
+<i>The demo video</i> 
+</p> 
+
+Associated paper:
 
 Alizadeh, T., & **Saduanov, B.** (2017, November). Robot programming by demonstration of multiple tasks within a common environment. In Multisensor Fusion and Integration for Intelligent Systems (MFI), 2017 IEEE International Conference on (pp. 608-613). IEEE.
 
