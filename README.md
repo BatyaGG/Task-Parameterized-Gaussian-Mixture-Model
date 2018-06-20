@@ -11,8 +11,7 @@ width="70%"" border="10" /></a>
 <i>The demo video</i> 
 </p> 
 
-Associated paper:
-
+### Associated paper:
 Alizadeh, T., & **Saduanov, B.** (2017, November). Robot programming by demonstration of multiple tasks within a common environment. In Multisensor Fusion and Integration for Intelligent Systems (MFI), 2017 IEEE International Conference on (pp. 608-613). IEEE.
 
 All math, concepts and data are referred from the research publication and MATLAB implementation both by professor Sylvain Calinon (http://calinon.ch):
@@ -21,7 +20,8 @@ Calinon, S. (2016)
 A Tutorial on Task-Parameterized Movement Learning and Retrieval
 Intelligent Service Robotics (Springer), 9:1, 1-29.
 
-MATLAB implementation: http://calinon.ch/download/task-parameterized-GMM.zip
+### MATLAB implementation:
+http://calinon.ch/download/task-parameterized-GMM.zip
 
 Thanks to XD-DENG for his matrix square root implementation (to avoid usage of scipy): https://github.com/XD-DENG/sqrt-matrix
 
